@@ -18,7 +18,7 @@ struct  WeatherData: Decodable {
         case coordinates = "coord"
         case temperature = "main"
         case weatherDescription = "weather"
-        case cityName
+        case cityName = "name"
     }
     
     init(from decoder: Decoder) throws {
@@ -27,11 +27,9 @@ struct  WeatherData: Decodable {
         self.temperature = try? container.decode(Main.self, forKey: .temperature)
         self.weatherDescription = try? container.decode([Weather].self, forKey: .weatherDescription)
         self.cityName = try? container.decode(String.self, forKey: .cityName)
+        
     }
 }
-
-
-
 
 struct Main: Decodable {
     

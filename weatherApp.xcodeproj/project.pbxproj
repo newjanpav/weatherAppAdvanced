@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		824739852B233497008521D8 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824739832B233497008521D8 /* WeatherViewController.swift */; };
+		824739862B233497008521D8 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824739842B233497008521D8 /* WeatherViewController.xib */; };
 		828746162B21EACF0079176D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828746152B21EACF0079176D /* AppDelegate.swift */; };
 		828746182B21EACF0079176D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828746172B21EACF0079176D /* SceneDelegate.swift */; };
 		8287461A2B21EACF0079176D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828746192B21EACF0079176D /* ViewController.swift */; };
 		8287461D2B21EACF0079176D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8287461B2B21EACF0079176D /* Main.storyboard */; };
 		8287461F2B21EAD10079176D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8287461E2B21EAD10079176D /* Assets.xcassets */; };
 		828746222B21EAD10079176D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 828746202B21EAD10079176D /* LaunchScreen.storyboard */; };
-		8287462A2B21EB9E0079176D /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828746292B21EB9E0079176D /* WeatherManager.swift */; };
+		8287462A2B21EB9E0079176D /* WeatheDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828746292B21EB9E0079176D /* WeatheDataLoader.swift */; };
 		8287462C2B21ECBE0079176D /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287462B2B21ECBE0079176D /* WeatherData.swift */; };
 		8287462E2B21FBD30079176D /* WeatherToShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287462D2B21FBD30079176D /* WeatherToShow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		824739832B233497008521D8 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		824739842B233497008521D8 /* WeatherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
 		828746122B21EACF0079176D /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		828746152B21EACF0079176D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		828746172B21EACF0079176D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +31,7 @@
 		8287461E2B21EAD10079176D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		828746212B21EAD10079176D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		828746232B21EAD10079176D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		828746292B21EB9E0079176D /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		828746292B21EB9E0079176D /* WeatheDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheDataLoader.swift; sourceTree = "<group>"; };
 		8287462B2B21ECBE0079176D /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		8287462D2B21FBD30079176D /* WeatherToShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherToShow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		824739872B2334A3008521D8 /* WeatherViewController */ = {
+			isa = PBXGroup;
+			children = (
+				824739832B233497008521D8 /* WeatherViewController.swift */,
+				824739842B233497008521D8 /* WeatherViewController.xib */,
+			);
+			path = WeatherViewController;
+			sourceTree = "<group>";
+		};
 		828746092B21EACF0079176D = {
 			isa = PBXGroup;
 			children = (
@@ -65,8 +78,9 @@
 				828746152B21EACF0079176D /* AppDelegate.swift */,
 				828746172B21EACF0079176D /* SceneDelegate.swift */,
 				828746192B21EACF0079176D /* ViewController.swift */,
-				828746292B21EB9E0079176D /* WeatherManager.swift */,
+				824739872B2334A3008521D8 /* WeatherViewController */,
 				8287462F2B21FF050079176D /* Weather */,
+				828746292B21EB9E0079176D /* WeatheDataLoader.swift */,
 				8287461B2B21EACF0079176D /* Main.storyboard */,
 				8287461E2B21EAD10079176D /* Assets.xcassets */,
 				828746202B21EAD10079176D /* LaunchScreen.storyboard */,
@@ -143,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				828746222B21EAD10079176D /* LaunchScreen.storyboard in Resources */,
+				824739862B233497008521D8 /* WeatherViewController.xib in Resources */,
 				8287461F2B21EAD10079176D /* Assets.xcassets in Resources */,
 				8287461D2B21EACF0079176D /* Main.storyboard in Resources */,
 			);
@@ -158,7 +173,8 @@
 				8287461A2B21EACF0079176D /* ViewController.swift in Sources */,
 				8287462C2B21ECBE0079176D /* WeatherData.swift in Sources */,
 				828746162B21EACF0079176D /* AppDelegate.swift in Sources */,
-				8287462A2B21EB9E0079176D /* WeatherManager.swift in Sources */,
+				8287462A2B21EB9E0079176D /* WeatheDataLoader.swift in Sources */,
+				824739852B233497008521D8 /* WeatherViewController.swift in Sources */,
 				8287462E2B21FBD30079176D /* WeatherToShow.swift in Sources */,
 				828746182B21EACF0079176D /* SceneDelegate.swift in Sources */,
 			);

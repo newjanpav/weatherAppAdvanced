@@ -7,13 +7,23 @@
 
 import Foundation
 
-class WeatherToShow: Decodable {
+struct WeatherToShow: Decodable {
     
-    let temperature: Int
-    let temperatureMax: Int
-    let temperatureMin: Int
+    let temperature: Double
+    let temperatureMax: Double
+    let temperatureMin: Double
     let weatherDescription: String
     var weatherId: Int
+    
+    var temperatureString: String {
+        String(format: "%.0f", temperature)
+    }
+    var temperatureMaxString: String {
+        String(format: "%.0f", temperature)
+    }
+    var temperatureMinString: String {
+        String(format: "%.0f", temperature)
+    }
     
     var weatherImage: String {
         
@@ -31,9 +41,9 @@ class WeatherToShow: Decodable {
         case 800:
             return "sun.max"
         case 801...804:
-            return "cloud.bolt"
-        default:
             return "cloud"
+        default:
+            return "cloud.sun"
         }
     }
 }
