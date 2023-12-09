@@ -18,6 +18,8 @@
 		8287462A2B21EB9E0079176D /* WeatheDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828746292B21EB9E0079176D /* WeatheDataLoader.swift */; };
 		8287462C2B21ECBE0079176D /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287462B2B21ECBE0079176D /* WeatherData.swift */; };
 		8287462E2B21FBD30079176D /* WeatherToShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8287462D2B21FBD30079176D /* WeatherToShow.swift */; };
+		82AA79032B246F2C007354B3 /* WeatherForCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AA79012B246F2C007354B3 /* WeatherForCityViewController.swift */; };
+		82AA79042B246F2C007354B3 /* WeatherForCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82AA79022B246F2C007354B3 /* WeatherForCityViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		828746292B21EB9E0079176D /* WeatheDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheDataLoader.swift; sourceTree = "<group>"; };
 		8287462B2B21ECBE0079176D /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		8287462D2B21FBD30079176D /* WeatherToShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherToShow.swift; sourceTree = "<group>"; };
+		82AA79012B246F2C007354B3 /* WeatherForCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForCityViewController.swift; sourceTree = "<group>"; };
+		82AA79022B246F2C007354B3 /* WeatherForCityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForCityViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,14 @@
 				824739842B233497008521D8 /* WeatherViewController.xib */,
 			);
 			path = WeatherViewController;
+			sourceTree = "<group>";
+		};
+		824739882B237B52008521D8 /* WeatherDataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				828746292B21EB9E0079176D /* WeatheDataLoader.swift */,
+			);
+			name = WeatherDataLoader;
 			sourceTree = "<group>";
 		};
 		828746092B21EACF0079176D = {
@@ -78,9 +90,10 @@
 				828746152B21EACF0079176D /* AppDelegate.swift */,
 				828746172B21EACF0079176D /* SceneDelegate.swift */,
 				828746192B21EACF0079176D /* ViewController.swift */,
+				82AA79052B246F36007354B3 /* WeatherForCityViewController */,
 				824739872B2334A3008521D8 /* WeatherViewController */,
 				8287462F2B21FF050079176D /* Weather */,
-				828746292B21EB9E0079176D /* WeatheDataLoader.swift */,
+				824739882B237B52008521D8 /* WeatherDataLoader */,
 				8287461B2B21EACF0079176D /* Main.storyboard */,
 				8287461E2B21EAD10079176D /* Assets.xcassets */,
 				828746202B21EAD10079176D /* LaunchScreen.storyboard */,
@@ -96,6 +109,15 @@
 				8287462B2B21ECBE0079176D /* WeatherData.swift */,
 			);
 			name = Weather;
+			sourceTree = "<group>";
+		};
+		82AA79052B246F36007354B3 /* WeatherForCityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				82AA79022B246F2C007354B3 /* WeatherForCityViewController.xib */,
+				82AA79012B246F2C007354B3 /* WeatherForCityViewController.swift */,
+			);
+			path = WeatherForCityViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				828746222B21EAD10079176D /* LaunchScreen.storyboard in Resources */,
+				82AA79042B246F2C007354B3 /* WeatherForCityViewController.xib in Resources */,
 				824739862B233497008521D8 /* WeatherViewController.xib in Resources */,
 				8287461F2B21EAD10079176D /* Assets.xcassets in Resources */,
 				8287461D2B21EACF0079176D /* Main.storyboard in Resources */,
@@ -174,6 +197,7 @@
 				8287462C2B21ECBE0079176D /* WeatherData.swift in Sources */,
 				828746162B21EACF0079176D /* AppDelegate.swift in Sources */,
 				8287462A2B21EB9E0079176D /* WeatheDataLoader.swift in Sources */,
+				82AA79032B246F2C007354B3 /* WeatherForCityViewController.swift in Sources */,
 				824739852B233497008521D8 /* WeatherViewController.swift in Sources */,
 				8287462E2B21FBD30079176D /* WeatherToShow.swift in Sources */,
 				828746182B21EACF0079176D /* SceneDelegate.swift in Sources */,

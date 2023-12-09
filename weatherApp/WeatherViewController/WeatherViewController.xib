@@ -10,9 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherViewController" customModule="weatherApp" customModuleProvider="target">
             <connections>
-                <outlet property="conditionOfWeatherImage" destination="HSJ-Gn-j2u" id="OP2-r8-73a"/>
+                <outlet property="conditionWeatherImage" destination="HSJ-Gn-j2u" id="OP2-r8-73a"/>
+                <outlet property="currentLocation" destination="Xcg-Hv-5Q8" id="BiM-MV-YVa"/>
                 <outlet property="descriptionWeatherLabel" destination="dVq-W6-eqk" id="9dq-Y6-q1F"/>
-                <outlet property="lookForAWeatherTextField" destination="W4S-u7-zwm" id="aSd-On-S9g"/>
+                <outlet property="lookForAweatherTextField" destination="W4S-u7-zwm" id="aSd-On-S9g"/>
                 <outlet property="minMaxTemperatureLabel" destination="us4-IX-Tjp" id="PhK-bw-MtO"/>
                 <outlet property="temperatureLabel" destination="lZ8-M4-rLo" id="we1-qj-d1a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
