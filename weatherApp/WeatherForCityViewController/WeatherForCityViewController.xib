@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherForCityViewController" customModule="weatherApp" customModuleProvider="target">
             <connections>
+                <outlet property="cityNameLabel" destination="MIj-B8-i6C" id="wLx-ol-Nmw"/>
                 <outlet property="conditionWeatherImage" destination="OBJ-U9-BYv" id="bJg-1D-bCb"/>
                 <outlet property="temperatureLabel" destination="CdQ-fe-dKr" id="o91-4c-25Q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -49,6 +50,16 @@
                         </imageView>
                     </subviews>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIj-B8-i6C">
+                    <rect key="frame" x="16" y="90" width="361" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="361" id="CbK-Sa-mc0"/>
+                        <constraint firstAttribute="height" constant="42" id="wQn-eY-9E4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -56,9 +67,11 @@
                 <constraint firstItem="cB4-4a-upB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="KWI-it-Wd9"/>
                 <constraint firstItem="fWn-sN-6y0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="107" id="Lhn-6a-i3Q"/>
                 <constraint firstAttribute="bottom" secondItem="cB4-4a-upB" secondAttribute="bottom" id="PDi-IJ-Y9W"/>
+                <constraint firstItem="MIj-B8-i6C" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="cT1-ph-faC"/>
                 <constraint firstItem="fWn-sN-6y0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dKH-Nu-N99"/>
                 <constraint firstItem="cB4-4a-upB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ecQ-oE-u6K"/>
                 <constraint firstItem="cB4-4a-upB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="h86-3s-Lws"/>
+                <constraint firstItem="MIj-B8-i6C" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="31" id="wn7-mB-G5p"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>

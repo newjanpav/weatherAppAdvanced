@@ -7,18 +7,24 @@
 
 import Foundation
 
-struct  WeatherData: Decodable {
+
+
+struct  WeatherData: Decodable  {
     
+    let timeZone: String?
     let cityName: String?
     let coordinates: Coord?
     let temperature: Main?
     let weatherDescription: [Weather]?
-    
+    let hourly: [Hourly]?
+
     enum CodingKeys: String, CodingKey {
         case coordinates = "coord"
         case temperature = "main"
         case weatherDescription = "weather"
         case cityName = "name"
+        case hourly
+        case timeZone = "timezone"
     }
     
     init(from decoder: Decoder) throws {
@@ -27,9 +33,11 @@ struct  WeatherData: Decodable {
         self.temperature = try? container.decode(Main.self, forKey: .temperature)
         self.weatherDescription = try? container.decode([Weather].self, forKey: .weatherDescription)
         self.cityName = try? container.decode(String.self, forKey: .cityName)
-        
+        self.hourly = try? container.decode([Hourly].self, forKey: .hourly)
+        self.timeZone = try? container.decode(String.self, forKey: .timeZone)
     }
 }
+
 
 struct Main: Decodable {
     
@@ -52,7 +60,6 @@ struct Main: Decodable {
 }
 
 
-
 struct Coord: Decodable {
     
     let longitude: Double?
@@ -71,10 +78,31 @@ struct Coord: Decodable {
 }
 
 
-
 struct Weather: Decodable {
     
     let id: Int
     let description: String
 }
+
+
+struct Hourly: Decodable {
+    
+    var dt: TimeInterval?
+    var temperature: Double?
+    var weather: [Weather]?
+    
+    enum CodingKeys: String, CodingKey {
+        case temperature = "temp"
+        case dt
+        case weather
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.temperature =  try? container.decode(Double.self, forKey: .temperature)
+        self.dt =  try? container.decode(TimeInterval.self, forKey: .dt)
+        self.weather =  try? container.decode( [Weather].self, forKey: .weather)
+    }
+}
+
 
