@@ -16,11 +16,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionWeatherImage: UIImageView!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
-    @IBOutlet weak var minMaxTemperatureLabel: UILabel!
     @IBOutlet weak var currentLocation: UILabel!
     
-//    private var hourlyForecastCollectionView = UICollectionView(frame: <#T##CGRect#>, collectionViewLayout: <#T##UICollectionViewLayout#>)
-//
+    private var hourlyForecastCollectionView = HourlyForecastCollectionView()
+
 
     let locationManager = CLLocationManager()
     let currentWeather = WeatherDataLoader()
@@ -33,22 +32,23 @@ class WeatherViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestLocation()
         locationManager.requestWhenInUseAuthorization()
+        
+        view.addSubview(hourlyForecastCollectionView)
+        hourlyForecastCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        hourlyForecastCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        hourlyForecastCollectionView.topAnchor.constraint(equalTo: descriptionWeatherLabel.bottomAnchor, constant: 10)
+            .isActive = true
+        hourlyForecastCollectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        hourlyForecastCollectionView.backgroundColor = .gray
     }
     
     
-    //test
     @IBAction func showLocation(_ sender: UIButton) {
         locationManager.requestLocation()
-    }
-    
-    func didUpdateWeather(weather: HourlyWeatherToShow) {
-        DispatchQueue.main.async {
-            self.temperatureLabel.text = weather.temperatureString + "°"
-            self.descriptionWeatherLabel.text = weather.weatherDescription
-            self.conditionWeatherImage.image = UIImage(named: weather.weatherImage)
-        }
+      
     }
 }
+
 
 
 extension WeatherViewController: UITextFieldDelegate {
@@ -73,16 +73,15 @@ extension WeatherViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if let city = lookForAweatherTextField.text, !city.isEmpty {
-           
+            
             currentWeather.loadWeatherDataWithCityName(forCity: city) { data, error in
-                if let safeData = data {
-                    DispatchQueue.main.async {
-                        let vc = WeatherForCityViewController()
-                        vc.temperature = safeData.temperatureString + "°"
-                        vc.weatherImage = UIImage(named: safeData.weatherImage)
-                        vc.cityName = safeData.cityName
-                        self.present(vc,animated: true, completion: nil)
-                    }
+                guard  let safeData = data  else { return }
+                DispatchQueue.main.async {
+                    let vc = WeatherForCityViewController()
+                    vc.temperature = safeData.temperatureString + "°"
+                    vc.weatherImage = UIImage(named: safeData.weatherImage)
+                    vc.cityName = safeData.cityName
+                    self.present(vc,animated: true, completion: nil)
                 }
             }
         }
@@ -102,12 +101,23 @@ extension WeatherViewController: CLLocationManagerDelegate {
             let lon = location.coordinate.longitude
             
             currentWeather.loadWeatherDataHourly(latitude: lat, longitude: lon) { [ weak self ] data, error in
-                if let safeData = data {
-                    self?.didUpdateWeather(weather: safeData[0])
+                guard let safeData = data  else { return }
+                DispatchQueue.main.async {
+                    let weather =  safeData[0]
+                    self?.temperatureLabel.text = weather.temperatureString + "°"
+                    self?.descriptionWeatherLabel.text = weather.weatherDescription
+                    self?.conditionWeatherImage.image = UIImage(named: weather.weatherImage)
+                    self?.hourlyForecastCollectionView.cells = safeData
+                    self?.hourlyForecastCollectionView.reloadData()
                 }
             }
         }
+        
+        //            currentWeather.loadWeatherDataDaily(latitude: lat, longitude: lon) { [ weak self ] data, error in
+        //                print("success")
+        //            }
     }
+   
   
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         currentLocation.text = "Location error"
