@@ -17,27 +17,8 @@ struct WeatherToShow: Decodable {
     var temperatureString: String {
         String(format: "%.0f", temperature)
     }
-
     var weatherImage: String {
-        
-        switch weatherId {
-        case 200...232:
-            return "cloud.bolt"
-        case 300...321:
-            return "cloud.drizzle"
-        case 500...531:
-            return "cloud.rain"
-        case 600...622:
-            return "cloud.snow"
-        case 701...781:
-            return "cloud.fog"
-        case 800:
-            return "sun.max"
-        case 801...804:
-            return "cloud"
-        default:
-            return "cloud.sun"
-        }
+        TransformToImage.someCloasure(id: weatherId)
     }
 }
 
@@ -52,29 +33,9 @@ struct HourlyWeatherToShow {
     var temperatureString: String {
         String(format: "%.0f", hourlyTemperature)
     }
-
     var weatherImage: String {
-        
-        switch hourlyWeatherId {
-        case 200...232:
-            return "cloud.bolt"
-        case 300...321:
-            return "cloud.drizzle"
-        case 500...531:
-            return "cloud.rain"
-        case 600...622:
-            return "cloud.snow"
-        case 701...781:
-            return "cloud.fog"
-        case 800:
-            return "sun.max"
-        case 801...804:
-            return "cloud"
-        default:
-            return "cloud.sun"
-        }
+       return  TransformToImage.someCloasure(id: hourlyWeatherId)
     }
-    
 }
 
 struct DailyWeatherToShow {
@@ -86,10 +47,18 @@ struct DailyWeatherToShow {
     var temperatureString: String {
         String(format: "%.0f", daylyTemperature)
     }
-
+    
     var weatherImage: String {
+       return TransformToImage.someCloasure(id: daylyWeatherId)
+    }
+}
+    
+    
+private struct TransformToImage {
+    
+ static func someCloasure(id: Int) -> String {
         
-        switch daylyWeatherId {
+        switch id {
         case 200...232:
             return "cloud.bolt"
         case 300...321:
@@ -108,8 +77,7 @@ struct DailyWeatherToShow {
             return "cloud.sun"
         }
     }
-    
 }
-    
+
     
 

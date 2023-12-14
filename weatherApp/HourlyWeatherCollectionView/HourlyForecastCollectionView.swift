@@ -21,6 +21,7 @@ class HourlyForecastCollectionView: UICollectionView  {
         let nibCell = UINib(nibName: "HourlyCollectionViewCell", bundle: nil)
         register(nibCell, forCellWithReuseIdentifier: cellIdentifier)
         translatesAutoresizingMaskIntoConstraints = false
+        self.showsHorizontalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {
@@ -39,7 +40,7 @@ extension HourlyForecastCollectionView: UICollectionViewDelegate, UICollectionVi
         
         let cell = dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? HourlyCollectionViewCell
         cell?.hourLabel.text = cells[indexPath.row].hour
-        cell?.temperatureLabel.text = cells[indexPath.row].temperatureString
+        cell?.temperatureLabel.text = cells[indexPath.row].temperatureString + "°"
         cell?.iconWeatherImage.image = UIImage(named: cells[indexPath.row].weatherImage )
         
         return cell!

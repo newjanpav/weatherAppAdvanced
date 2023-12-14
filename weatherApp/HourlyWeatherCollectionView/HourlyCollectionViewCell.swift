@@ -16,7 +16,14 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        self.backgroundColor = .clear
     }
+    override func layoutSubviews() {
+            super.layoutSubviews()
+            layer.cornerRadius = 15.0
+            layer.borderWidth = 3.0
+            layer.borderColor = UIColor.black.cgColor
+            layer.masksToBounds = true
+        }
 
 }

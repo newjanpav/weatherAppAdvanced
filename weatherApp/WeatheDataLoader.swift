@@ -8,9 +8,6 @@
 import Foundation
 import CoreLocation
 
-
-
-
 class WeatherDataLoader {
     
     var hourlyWeatherDataList: [HourlyWeatherToShow] = []
@@ -32,7 +29,7 @@ class WeatherDataLoader {
     let apiKey = "4529d030d5423024a977f7065add7d8c"
     let units = "metric"
     
-
+    
     private var hourFormatter: DateFormatter {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "ha"
@@ -78,10 +75,9 @@ class WeatherDataLoader {
     }
     
     
-    
-    //MARK: - Load Hourly Weather Data
-    func loadWeatherDataHourly(latitude: CLLocationDegrees , longitude: CLLocationDegrees, completion: @escaping([HourlyWeatherToShow]?, Error?) -> Void) {
+    func createURLForHourAndDay(latitude: CLLocationDegrees, longitude: CLLocationDegrees ) -> URLRequest? {
         
+        var  request: URLRequest?
         var components = URLComponents(string: baseUrlString)
         components?.path = weatherPathForHourlyAndDaily
         
@@ -92,9 +88,17 @@ class WeatherDataLoader {
         let excludeItem = URLQueryItem(name: WeatherDataparamsKey.exclude.rawValue, value: excludedParametrs)
         components?.queryItems = [apiKeyItem,unitsItem, longitudeItem, latitudeItem, excludeItem]
         
-        guard let url = components?.url else { return }
-        let request = URLRequest(url: url)
-        
+        if let url = components?.url {
+            request = URLRequest(url: url)
+        }
+        return request
+    }
+    
+    //MARK: - Load Hourly Weather Data
+    
+    func loadWeatherDataHourly(latitude: CLLocationDegrees , longitude: CLLocationDegrees, completion: @escaping([HourlyWeatherToShow]?, Error?) -> Void) {
+    
+        guard let  request = createURLForHourAndDay(latitude: latitude, longitude: longitude) else { return }
         
         let dataTask = URLSession.shared.dataTask(with: request) { data, respoce, error in
             guard error == nil , let safeData = data else  { return }
@@ -111,7 +115,7 @@ class WeatherDataLoader {
                    let weatherArray = hourly[index].weather,
                    let weatherTimeZone = safeWeather.timeZone,
                    let weatherdescription = weatherArray.first?.description,
-                   let hourlyId = weatherArray.first?.id   {
+                   let hourlyId = weatherArray.first?.id {
                     
                     let formatedDate = Date(timeIntervalSince1970: hour)
                     self.hourFormatter.timeZone = TimeZone(identifier: weatherTimeZone)
@@ -120,32 +124,19 @@ class WeatherDataLoader {
                     let hourlyWeather = HourlyWeatherToShow(hour: hour, hourlyTemperature: hourlyTemperature, hourlyWeatherId: hourlyId, weatherDescription: weatherdescription)
                     
                     self.hourlyWeatherDataList.append(hourlyWeather)
-                  
-                    
                     print("Hour \(hour)  Temperature: \(hourlyTemperature)  Id: \(hourlyId)")
-                    
                 }
             }
             completion(self.hourlyWeatherDataList, nil)
         }
         dataTask.resume()
     }
-
+    
     // MARK: - Load Daily Weather Data
+    
     func loadWeatherDataDaily(latitude: CLLocationDegrees , longitude: CLLocationDegrees, completion: @escaping([DailyWeatherToShow]?, Error?) -> Void) {
-        
-        var components = URLComponents(string: baseUrlString)
-        components?.path = weatherPathForHourlyAndDaily
-        
-        let apiKeyItem = URLQueryItem(name: WeatherDataparamsKey.apiKey.rawValue, value: apiKey)
-        let unitsItem = URLQueryItem(name: WeatherDataparamsKey.units.rawValue, value: units)
-        let longitudeItem = URLQueryItem(name: WeatherDataparamsKey.longitude.rawValue, value: String(longitude))
-        let latitudeItem = URLQueryItem(name: WeatherDataparamsKey.latitude.rawValue, value: String(latitude))
-        let excludeItem = URLQueryItem(name: WeatherDataparamsKey.exclude.rawValue, value: excludedParametrs)
-        components?.queryItems = [apiKeyItem,unitsItem, longitudeItem, latitudeItem, excludeItem]
-        
-        guard let url = components?.url else { return }
-        let request = URLRequest(url: url)
+    
+        guard let  request = createURLForHourAndDay(latitude: latitude, longitude: longitude) else { return }
         
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil, let safeData = data else { return }
@@ -175,10 +166,9 @@ class WeatherDataLoader {
             completion(self.dailyWeatherDataList, nil)
         }
         dataTask.resume()
-        
     }
 }
-    
+
     
    
 
