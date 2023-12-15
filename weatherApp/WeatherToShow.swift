@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherToShow: Decodable {
+struct WeatherToShow {
     
     let cityName: String
     let temperature: Double
@@ -23,7 +23,7 @@ struct WeatherToShow: Decodable {
 }
 
 
-struct HourlyWeatherToShow {
+struct HourlyWeatherToShow: Codable {
     
     let hour: String
     let hourlyTemperature: Double
@@ -38,7 +38,7 @@ struct HourlyWeatherToShow {
     }
 }
 
-struct DailyWeatherToShow {
+struct DailyWeatherToShow: Codable {
     
     let day: String
     let daylyTemperature: Double

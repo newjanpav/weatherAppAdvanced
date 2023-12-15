@@ -11,6 +11,8 @@ import CoreLocation
 
 
 class WeatherViewController: UIViewController {
+    
+    let storage = UserDefaultsStorage()
 
     @IBOutlet weak var lookForAweatherTextField: UITextField!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -25,6 +27,7 @@ class WeatherViewController: UIViewController {
 
     let locationManager = CLLocationManager()
     let currentWeather = WeatherDataLoader()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +54,7 @@ class WeatherViewController: UIViewController {
         hourlyForecastLabel.isHidden = true
         dailyForecastLabel.isHidden = true
         activityIndicator.isHidden = true
+        
     }
     
     @IBAction func showLocation(_ sender: UIButton) {
@@ -108,7 +112,7 @@ extension WeatherViewController: UITextFieldDelegate {
             
 
 extension WeatherViewController: CLLocationManagerDelegate {
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let location = locations.last {
@@ -140,11 +144,14 @@ extension WeatherViewController: CLLocationManagerDelegate {
             }
         }
     }
-   
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         currentLocation.text = "Location error"
     }
 }
+    
+    
+   
 
 
 
@@ -188,141 +195,3 @@ extension WeatherViewController: CLLocationManagerDelegate {
 
 
 
-
-
-//import UIKit
-//import CoreLocation
-//
-//
-//class WeatherViewController: UIViewController {
-//
-//    @IBOutlet weak var lookForAWeatherTextField: UITextField!
-//    @IBOutlet weak var temperatureLabel: UILabel!
-//    @IBOutlet weak var conditionWeatherImage: UIImageView!
-//    @IBOutlet weak var descriptionWeatherLabel: UILabel!
-//    @IBOutlet weak var minMaxTemperatureLabel: UILabel!
-//    @IBOutlet weak var currentLocation: UILabel!
-//
-//
-//    let locationManager = CLLocationManager()
-//    let currentWeather = WeatherDataLoader()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        locationManager.requestWhenInUseAuthorization()
-//        lookForAWeatherTextField.delegate = self
-//        locationManager.delegate = self
-//        locationManager.requestLocation()
-//
-//    }
-//}
-//
-//
-//extension WeatherViewController: UITextFieldDelegate {
-//
-//    @IBAction func didTapLookForAWeather (_ sender: Any) {
-//        lookForAWeatherTextField.endEditing(true)
-//    }
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        lookForAWeatherTextField.endEditing(true)
-//        return true
-//    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if lookForAWeatherTextField.text != "" {
-//            return true
-//        } else {
-//            lookForAWeatherTextField.placeholder = "Type a City"
-//            return false
-//        }
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//
-//        if let city = lookForAWeatherTextField.text {
-//            currentWeather.loadWeatherDataWithCityName(forCity: city) { [weak self ] data, error in
-//                if let safeData = data {
-//                    self?.didUpdateWeather(weather: safeData)
-
-//                }
-//            }
-//            lookForAWeatherTextField.text = " "
-//        }
-//    }
-//}
-//
-//
-//extension WeatherViewController: CLLocationManagerDelegate {
-//
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if let location = locations.last {
-//            locationManager.stopUpdatingLocation()
-//            let lat = location.coordinate.latitude
-//            let lon = location.coordinate.longitude
-//            currentWeather.loadWeatherDataWithLocation(latitude: lat, longitude: lon) { [ weak self ] data, error in
-//                if let safeData = data {
-//                    self?.didUpdateWeather(weather: safeData)
-//                }
-//            }
-//        }
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        currentLocation.text = "Location error "
-//    }
-//}
-//
-//
-//extension WeatherViewController: WeatherDataLoaderDelegate {
-//
-//    func didUpdateWeather(weather: WeatherToShow) {
-//        DispatchQueue.main.async {
-//
-//            self.temperatureLabel.text = weather.temperatureString + "°"
-//            self.descriptionWeatherLabel.text = weather.weatherDescription
-//            self.minMaxTemperatureLabel.text = ("Max:\(weather.temperatureMaxString)° Min: \(weather.temperatureMinString)°")
-//            self.conditionWeatherImage.image = UIImage(named: weather.weatherImage)
-//        }
-//    }
-//}
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
