@@ -9,32 +9,42 @@ import UIKit
 import CoreLocation
 
 
+protocol WeatherViewControllerDelegate {
+    func monitorNetwork( _ controller: WeatherViewController)
+}
+
 
 class WeatherViewController: UIViewController {
-    
-    let storage = UserDefaultsStorage()
+
+    let locationManager = CLLocationManager()
+    let currentWeather = WeatherDataLoader()
+    var delegate: WeatherViewControllerDelegate?
+    var hourlyForecastCollectionView = HourlyForecastCollectionView()
+    var dailyForecastTableView = DailyForecastTableView()
 
     @IBOutlet weak var lookForAweatherTextField: UITextField!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionWeatherImage: UIImageView!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
-    @IBOutlet weak var currentLocation: UILabel!
+    @IBOutlet weak var currentLocationLabel: UILabel!
     @IBOutlet weak var hourlyForecastLabel: UILabel!
     @IBOutlet weak var dailyForecastLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    private var hourlyForecastCollectionView = HourlyForecastCollectionView()
-    private var dailyForecastTableView = DailyForecastTableView()
-
-    let locationManager = CLLocationManager()
-    let currentWeather = WeatherDataLoader()
-
+     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        delegate = MonitorNetworkManager()
+        delegate?.monitorNetwork(self)
+
         lookForAweatherTextField.delegate = self
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestLocation()
+        
         
         view.addSubview(hourlyForecastCollectionView)
         hourlyForecastCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
@@ -146,7 +156,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        currentLocation.text = "Location error"
+        currentLocationLabel.text = "Location error"
     }
 }
     

@@ -47,7 +47,6 @@ struct DailyWeatherToShow: Codable {
     var temperatureString: String {
         String(format: "%.0f", daylyTemperature)
     }
-    
     var weatherImage: String {
        return TransformToImage.someCloasure(id: daylyWeatherId)
     }

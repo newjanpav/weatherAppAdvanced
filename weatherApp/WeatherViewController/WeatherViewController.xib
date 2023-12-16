@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="activityIndicator" destination="74j-6X-D18" id="Klk-No-lVs"/>
                 <outlet property="conditionWeatherImage" destination="HSJ-Gn-j2u" id="OP2-r8-73a"/>
-                <outlet property="currentLocation" destination="Xcg-Hv-5Q8" id="BiM-MV-YVa"/>
+                <outlet property="currentLocationLabel" destination="Xcg-Hv-5Q8" id="BiM-MV-YVa"/>
                 <outlet property="dailyForecastLabel" destination="e16-Ei-pQD" id="B2z-3h-Vxx"/>
                 <outlet property="descriptionWeatherLabel" destination="dVq-W6-eqk" id="9dq-Y6-q1F"/>
                 <outlet property="hourlyForecastLabel" destination="eeW-cL-3zb" id="Jl3-Gp-a8D"/>
@@ -22,8 +22,8 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ieW-uq-ZVy">
@@ -34,7 +34,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVq-W6-eqk">
-                    <rect key="frame" x="47.666666666666657" y="307" width="298" height="25"/>
+                    <rect key="frame" x="47.666666666666657" y="295" width="298" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="298" id="3cI-0P-jPg"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="298" id="60A-po-Fst"/>
@@ -46,7 +46,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VNI-Ij-lBP">
-                    <rect key="frame" x="47.666666666666657" y="156" width="298" height="145"/>
+                    <rect key="frame" x="47.666666666666657" y="144" width="298" height="145"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZ8-M4-rLo">
                             <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
@@ -73,7 +73,7 @@
                         <constraint firstAttribute="height" constant="25" id="LWy-uA-Sz6"/>
                         <constraint firstAttribute="width" constant="280" id="O07-W2-nJi"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -117,7 +117,7 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly Forecast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeW-cL-3zb">
-                    <rect key="frame" x="47.666666666666657" y="367" width="298" height="20"/>
+                    <rect key="frame" x="47.666666666666657" y="355" width="298" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="298" id="ERN-jc-yju"/>
                         <constraint firstAttribute="height" constant="20" id="Mh2-Pv-gin"/>
@@ -134,7 +134,7 @@
                     </constraints>
                 </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Forecast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e16-Ei-pQD">
-                    <rect key="frame" x="47.666666666666657" y="497" width="298" height="20"/>
+                    <rect key="frame" x="47.666666666666657" y="485" width="298" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="298" id="Uto-6n-k7h"/>
                         <constraint firstAttribute="height" constant="20" id="fr3-Za-E0S"/>

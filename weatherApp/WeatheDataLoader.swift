@@ -131,7 +131,6 @@ class WeatherDataLoader {
                 }
             }
             self.storageManager.saveHourlyForecast(forecast: self.hourlyWeatherDataList, forKey: .hourlyForecast)
-
             completion(self.hourlyWeatherDataList, nil)
         }
         dataTask.resume()
