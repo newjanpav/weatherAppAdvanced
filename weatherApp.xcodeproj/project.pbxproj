@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		824739852B233497008521D8 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824739832B233497008521D8 /* WeatherViewController.swift */; };
-		824739862B233497008521D8 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824739842B233497008521D8 /* WeatherViewController.xib */; };
 		824A14A72B260D6800219DC4 /* HourlyForecastCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A14A62B260D6800219DC4 /* HourlyForecastCollectionView.swift */; };
 		824FD1122B29CC3300813F29 /* HourlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824FD1102B29CC3300813F29 /* HourlyCollectionViewCell.swift */; };
 		824FD1132B29CC3300813F29 /* HourlyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824FD1112B29CC3300813F29 /* HourlyCollectionViewCell.xib */; };
@@ -26,13 +25,13 @@
 		82A177A12B2AEE57000F4803 /* DailyForecastTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A177A02B2AEE57000F4803 /* DailyForecastTableView.swift */; };
 		82A177A52B2AFA49000F4803 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A177A32B2AFA49000F4803 /* DailyTableViewCell.swift */; };
 		82A177A62B2AFA49000F4803 /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82A177A42B2AFA49000F4803 /* DailyTableViewCell.xib */; };
+		82A7DD7A2B2F36D80052429F /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82A7DD7C2B2F36D80052429F /* WeatherViewController.xib */; };
 		82AA79032B246F2C007354B3 /* WeatherForCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AA79012B246F2C007354B3 /* WeatherForCityViewController.swift */; };
 		82AA79042B246F2C007354B3 /* WeatherForCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82AA79022B246F2C007354B3 /* WeatherForCityViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		824739832B233497008521D8 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		824739842B233497008521D8 /* WeatherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
 		824A14A62B260D6800219DC4 /* HourlyForecastCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionView.swift; sourceTree = "<group>"; };
 		824FD1102B29CC3300813F29 /* HourlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionViewCell.swift; sourceTree = "<group>"; };
 		824FD1112B29CC3300813F29 /* HourlyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -52,6 +51,8 @@
 		82A177A02B2AEE57000F4803 /* DailyForecastTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableView.swift; sourceTree = "<group>"; };
 		82A177A32B2AFA49000F4803 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		82A177A42B2AFA49000F4803 /* DailyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyTableViewCell.xib; sourceTree = "<group>"; };
+		82A7DD7D2B2F36E20052429F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/WeatherViewController.xib; sourceTree = "<group>"; };
+		82A7DD862B2F3BA50052429F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/WeatherViewController.strings; sourceTree = "<group>"; };
 		82AA79012B246F2C007354B3 /* WeatherForCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForCityViewController.swift; sourceTree = "<group>"; };
 		82AA79022B246F2C007354B3 /* WeatherForCityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForCityViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,7 +73,7 @@
 			children = (
 				828422482B2DA81B00C875D5 /* MonitorNetworkManager.swift */,
 				824739832B233497008521D8 /* WeatherViewController.swift */,
-				824739842B233497008521D8 /* WeatherViewController.xib */,
+				82A7DD7C2B2F36D80052429F /* WeatherViewController.xib */,
 			);
 			path = WeatherViewController;
 			sourceTree = "<group>";
@@ -210,6 +211,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 828746092B21EACF0079176D;
 			productRefGroup = 828746132B21EACF0079176D /* Products */;
@@ -230,7 +232,7 @@
 				82AA79042B246F2C007354B3 /* WeatherForCityViewController.xib in Resources */,
 				824FD1132B29CC3300813F29 /* HourlyCollectionViewCell.xib in Resources */,
 				82A177A62B2AFA49000F4803 /* DailyTableViewCell.xib in Resources */,
-				824739862B233497008521D8 /* WeatherViewController.xib in Resources */,
+				82A7DD7A2B2F36D80052429F /* WeatherViewController.xib in Resources */,
 				8287461F2B21EAD10079176D /* Assets.xcassets in Resources */,
 				8287461D2B21EACF0079176D /* Main.storyboard in Resources */,
 			);
@@ -279,6 +281,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		82A7DD7C2B2F36D80052429F /* WeatherViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82A7DD7D2B2F36E20052429F /* Base */,
+				82A7DD862B2F3BA50052429F /* ru */,
+			);
+			name = WeatherViewController.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -286,6 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -346,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

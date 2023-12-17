@@ -10,11 +10,23 @@ import Foundation
 
 class UserDefaultsStorage {
     
+    enum AppLanguage: String {
+        case English = "en"
+        case Russian = "ru"
+    }
+    let language = AppLanguage.RawValue()
+    
+    
     enum Key: String {
         case hourlyForecast
         case dailyForecast
         case lastUpdateKey
     }
+    
+    func getLastWord(forLanguage language: AppLanguage ) -> String {
+        return (language == .Russian) ? "назад" : "ago"
+    }
+    
     
     func saveHourlyForecast (forecast: [HourlyWeatherToShow], forKey key: Key) {
         
@@ -24,10 +36,10 @@ class UserDefaultsStorage {
         let encoder = JSONEncoder()
         let data = try! encoder.encode(forecast)
         UserDefaults.standard.set(data, forKey: key.rawValue )
-       
+        
     }
     
-    func retrieveHourlyForecast (forKey key: Key) -> ([HourlyWeatherToShow]?, timeRequest:Date?)  {
+    func retrieveHourlyForecast (forKey key: Key) -> ([HourlyWeatherToShow]?, dateRequest:Date?)  {
         let object =  UserDefaults.standard.value(forKey: key.rawValue)
         let decoder = JSONDecoder()
         guard let data = object  else { return (nil, nil) }
@@ -41,7 +53,7 @@ class UserDefaultsStorage {
         let encoder = JSONEncoder()
         let data = try! encoder.encode(forecast)
         UserDefaults.standard.set(data, forKey: key.rawValue )
-       
+        
     }
     
     func retrieveDailyForecast (forKey key: Key) -> [DailyWeatherToShow]? {
@@ -52,28 +64,22 @@ class UserDefaultsStorage {
         return dailyForecast
     }
     
-//
-//    func dataAge() -> String {
-//           guard let timestamp = UserDefaults.standard.value(forKey: Key.lastUpdateKey.rawValue) as? Date else {
-//               return "No data available"
-//           }
-//
-//           let currentTime = Date()
-//           let timeDifference = currentTime.timeIntervalSince(timestamp)
-//
-//           if timeDifference < 60 {
-//               return "\(Int(timeDifference)) seconds ago"
-//           } else if timeDifference < 3600 {
-//               return "\(Int(timeDifference / 60)) minutes ago"
-//           } else if timeDifference < 86400 {
-//               return "\(Int(timeDifference / 3600)) hours ago"
-//           } else {
-//               let dateFormatter = DateFormatter()
-//               dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a"
-//               return dateFormatter.string(from: timestamp)
-//           }
-//       }
     
+    func timeAgoSinceLastRequest() -> String {
+        
+        guard let timestamp = UserDefaults.standard.value(forKey: Key.lastUpdateKey.rawValue) as? Date else {
+            return "No available Date"
+        }
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .short
+        formatter.maximumUnitCount = 0
+        
+        let now = Date()
+        let components = Calendar.current.dateComponents([.second, .minute, .hour, .day], from: timestamp, to: now)
+        
+        let timeString = formatter.string(from: components) ??  "No available Date"
+        
+        let lastWord = getLastWord(forLanguage: .English)
+        return "\(timeString) \(lastWord) "
+    }
 }
-
-

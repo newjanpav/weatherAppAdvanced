@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Min Max Label"; ObjectID = "2lD-iQ-gyD"; */
+"2lD-iQ-gyD.text" = "Min Max Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "BNe-RK-e1e"; */
+"BNe-RK-e1e.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Temp Label"; ObjectID = "lI8-6n-nre"; */
+"lI8-6n-nre.text" = "Temp Label";
+
+/* Class = "UILabel"; text = "Description Label"; ObjectID = "uZE-fW-dec"; */
+"uZE-fW-dec.text" = "Description Label";

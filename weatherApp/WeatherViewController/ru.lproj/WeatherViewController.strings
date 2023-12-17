@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Current Location"; ObjectID = "Xcg-Hv-5Q8"; */
+"Xcg-Hv-5Q8.text" = "Текущее местоположение";
+
+/* Class = "UILabel"; text = "Daily Forecast"; ObjectID = "e16-Ei-pQD"; */
+"e16-Ei-pQD.text" = "Ежедневный прогноз";
+
+/* Class = "UILabel"; text = "Hourly Forecast"; ObjectID = "eeW-cL-3zb"; */
+"eeW-cL-3zb.text" = "Почасовой прогноз";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "sVf-yZ-0lL"; */
+"sVf-yZ-0lL.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "w30-xT-tQf"; */
+"w30-xT-tQf.normalTitle" = "Button";

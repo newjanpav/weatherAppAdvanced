@@ -11,16 +11,8 @@ import Network
 
 class MonitorNetworkManager: WeatherViewControllerDelegate {
     
-    var lastUpdatedate = Date()
     
-//    private var dayFormatter: DateFormatter {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "EEEE"
-//        return dateFormatter
-//    }
-    
-    
-    let storage = UserDefaultsStorage()
+   private let storage = UserDefaultsStorage()
     
     func monitorNetwork(_ controller: WeatherViewController) {
         let monitor = NWPathMonitor()
@@ -43,23 +35,16 @@ class MonitorNetworkManager: WeatherViewControllerDelegate {
                     controller.hourlyForecastCollectionView.reloadData()
                     controller.hourlyForecastLabel.isHidden = false
                     
-                    
-                    //for test
-                    self.lastUpdatedate = hourlyData.1
-                    //
-                    
                     let dailyWeather = dailyData
                     controller.dailyForecastTableView.cells = dailyWeather
                     controller.dailyForecastTableView.reloadData()
                     controller.dailyForecastLabel.isHidden = false
+                    controller.currentLocationLabel.text = self.storage.timeAgoSinceLastRequest()
                 }
             }
         }
         let queue = DispatchQueue(label: "com.monitorNetworkQueue.serialQueie")
         monitor.start(queue: queue)
-        //for test
-        print("___________\(lastUpdatedate)__________")
-       
-        
     }
+    
 }
