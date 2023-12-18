@@ -7,6 +7,13 @@
 
 import Foundation
 
+//save weather data to UserDefaultsStorage
+struct Forecast: Codable {
+    var hourlyForecast: [HourlyWeatherToShow]
+    var dailyForecast: [DailyWeatherToShow]
+}
+
+
 struct WeatherToShow {
     
     let cityName: String

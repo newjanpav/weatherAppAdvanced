@@ -11,35 +11,33 @@ import Network
 
 class MonitorNetworkManager: WeatherViewControllerDelegate {
     
-    
-   private let storage = UserDefaultsStorage()
-    
+   let storage = UserDefaultsStorage()
+   
     func monitorNetwork(_ controller: WeatherViewController) {
+      
         let monitor = NWPathMonitor()
-        monitor.pathUpdateHandler = { path in
+        monitor.pathUpdateHandler = {[ weak self ] path in
             if path.status == .satisfied {
                 monitor.cancel()
             } else {
                 DispatchQueue.main.async {
-                    guard let hourlyData:([HourlyWeatherToShow],Date) = self.storage.retrieveHourlyForecast(forKey: .hourlyForecast) as? ([HourlyWeatherToShow], Date),
-                          
-                          let dailyData = self.storage.retrieveDailyForecast(forKey: .dailyForecast) else {
+                    guard let forecastFromStorage:(Forecast,Date) = self?.storage.retrieveForecast(forKey: .hourlyForecast) as? (Forecast, Date) else {
                         controller.currentLocationLabel.text = "There are no available Data"
                         return }
                     
-                    let hourlyWeather = hourlyData.0
-                    controller.temperatureLabel.text = hourlyWeather[0].temperatureString + "°"
-                    controller.descriptionWeatherLabel.text = hourlyWeather[0].weatherDescription
-                    controller.conditionWeatherImage.image = UIImage(named: hourlyWeather[0].weatherImage)
-                    controller.hourlyForecastCollectionView.cells = hourlyWeather
+                    controller.locationErrorLabel.text = "Location error"
+                    let forecast = forecastFromStorage.0
+                    controller.temperatureLabel.text = forecast.hourlyForecast[0].temperatureString + "°"
+                    controller.descriptionWeatherLabel.text = forecast.hourlyForecast[0].weatherDescription
+                    controller.conditionWeatherImage.image = UIImage(named: forecast.hourlyForecast[0].weatherImage)
+                    controller.hourlyForecastCollectionView.cells = forecast.hourlyForecast
                     controller.hourlyForecastCollectionView.reloadData()
                     controller.hourlyForecastLabel.isHidden = false
                     
-                    let dailyWeather = dailyData
-                    controller.dailyForecastTableView.cells = dailyWeather
+                    controller.dailyForecastTableView.cells = forecast.dailyForecast
                     controller.dailyForecastTableView.reloadData()
                     controller.dailyForecastLabel.isHidden = false
-                    controller.currentLocationLabel.text = self.storage.timeAgoSinceLastRequest()
+                    controller.currentLocationLabel.text = self?.storage.timeAgoSinceLastRequest()
                 }
             }
         }
