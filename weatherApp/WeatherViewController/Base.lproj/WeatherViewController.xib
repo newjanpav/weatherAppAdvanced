@@ -16,7 +16,7 @@
                 <outlet property="dailyForecastLabel" destination="e16-Ei-pQD" id="B2z-3h-Vxx"/>
                 <outlet property="descriptionWeatherLabel" destination="3AS-F7-eo5" id="Har-ty-90f"/>
                 <outlet property="hourlyForecastLabel" destination="eeW-cL-3zb" id="Jl3-Gp-a8D"/>
-                <outlet property="locationErrorLabel" destination="IRl-cb-YvD" id="fx3-8C-XBP"/>
+                <outlet property="locationErrorLabel" destination="IRl-cb-YvD" id="AXp-Ft-Zgw"/>
                 <outlet property="lookForAweatherTextField" destination="W4S-u7-zwm" id="aSd-On-S9g"/>
                 <outlet property="temperatureLabel" destination="lZ8-M4-rLo" id="we1-qj-d1a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -62,13 +62,13 @@
                                 </button>
                             </subviews>
                         </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRl-cb-YvD" userLabel="Error ">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRl-cb-YvD">
                             <rect key="frame" x="0.0" y="43" width="303" height="25"/>
+                            <accessibility key="accessibilityConfiguration" identifier="Error Label"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="303" id="scY-du-M6l"/>
                                 <constraint firstAttribute="height" constant="25" id="tR6-4h-64w"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>

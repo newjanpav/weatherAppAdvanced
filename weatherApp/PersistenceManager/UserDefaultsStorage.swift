@@ -10,11 +10,12 @@ import Foundation
 
 class UserDefaultsStorage {
     
-    let language = AppLanguage.RawValue()
-    
-    enum AppLanguage: String {
-        case English
-        case Russian
+    private var currentLanguage: String {
+        if let language = Locale.current.languageCode {
+            return language
+        } else {
+            return  "en"
+        }
     }
     
     enum Key: String {
@@ -23,8 +24,8 @@ class UserDefaultsStorage {
         case lastUpdateKey
     }
     
-    func giveLastWord(forLanguage language: AppLanguage ) -> String {
-        return (language == .Russian) ? "назад" : "ago"
+    func giveLastWord() -> String {
+        return (currentLanguage == "ru") ? "назад" : "ago"
     }
     
     func saveForecast (forecast:Forecast ,forKey key: Key) {
@@ -57,7 +58,7 @@ class UserDefaultsStorage {
         let now = Date()
         let components = Calendar.current.dateComponents([.second, .minute, .hour, .day], from: timestamp, to: now)
         let timeString = formatter.string(from: components) ??  "No available Date"
-        let lastWord = giveLastWord(forLanguage: .English)
+        let lastWord = giveLastWord()
         return "\(timeString) \(lastWord) "
     }
 }

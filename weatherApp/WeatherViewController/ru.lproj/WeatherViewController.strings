@@ -13,3 +13,6 @@
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "w30-xT-tQf"; */
 "w30-xT-tQf.normalTitle" = "Button";
+
+/* Class  = "UILabel"; text = "Location Error"; ObjectID = "IRl-cb-YvD" */
+"IRl-cb-YvD.text" = "Ошибка геолокации";

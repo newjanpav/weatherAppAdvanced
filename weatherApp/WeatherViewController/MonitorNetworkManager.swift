@@ -16,16 +16,16 @@ class MonitorNetworkManager: WeatherViewControllerDelegate {
     func monitorNetwork(_ controller: WeatherViewController) {
       
         let monitor = NWPathMonitor()
-        monitor.pathUpdateHandler = {[ weak self ] path in
+        monitor.pathUpdateHandler = { [ weak self ] path in
             if path.status == .satisfied {
                 monitor.cancel()
             } else {
                 DispatchQueue.main.async {
                     guard let forecastFromStorage:(Forecast,Date) = self?.storage.retrieveForecast(forKey: .hourlyForecast) as? (Forecast, Date) else {
+                        controller.locationErrorLabel.isHidden = false
                         controller.currentLocationLabel.text = "There are no available Data"
                         return }
-                    
-                    controller.locationErrorLabel.text = "Location error"
+                    controller.locationErrorLabel.isHidden = false
                     let forecast = forecastFromStorage.0
                     controller.temperatureLabel.text = forecast.hourlyForecast[0].temperatureString + "°"
                     controller.descriptionWeatherLabel.text = forecast.hourlyForecast[0].weatherDescription

@@ -18,7 +18,7 @@ class WeatherViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     let currentWeather = WeatherDataLoader()
-    var delegate: MonitorNetworkManager?
+    var delegate = MonitorNetworkManager()
     var hourlyForecastCollectionView = HourlyForecastCollectionView()
     var dailyForecastTableView = DailyForecastTableView()
     
@@ -35,18 +35,19 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationErrorLabel.isHidden = true
         hourlyForecastLabel.isHidden = true
         dailyForecastLabel.isHidden = true
       
         delegate = MonitorNetworkManager()
-        delegate?.monitorNetwork(self)
+        delegate.monitorNetwork(self)
         
         lookForAweatherTextField.delegate = self
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.locationManager.requestLocation()
         }
         
@@ -94,7 +95,12 @@ extension WeatherViewController: UITextFieldDelegate {
         if let city = lookForAweatherTextField.text, !city.isEmpty {
             
             currentWeather.loadWeatherDataWithCityName(forCity: city) { [ weak self ] data, error in
-                guard  let safeData = data  else { return }
+                guard  let safeData = data  else {
+                    
+                    DispatchQueue.main.async {
+                        self?.locationErrorLabel.text = "\(error?.localizedDescription ?? "Unknown Error")" }
+                        return }
+                
                 DispatchQueue.main.async {
                     let vc = WeatherForCityViewController()
                     vc.temperature = safeData.temperatureString + "°"
@@ -120,9 +126,12 @@ extension WeatherViewController: CLLocationManagerDelegate {
             let lon = location.coordinate.longitude
             
             currentWeather.loadWeatherHourlyAndDailyData(latitude: lat, longitude: lon) { [ weak self ] data, error in
-                guard let safeData = data  else { return }
-                DispatchQueue.main.async {
+                guard let safeData = data  else {
+                    DispatchQueue.main.async {
+                        self?.locationErrorLabel.text = "\(error?.localizedDescription ?? "Unknown Error")" }
+                    return }
                 
+                DispatchQueue.main.async {
                     let weather =  safeData.0[0]
                     self?.temperatureLabel.text = weather.temperatureString + "°"
                     self?.descriptionWeatherLabel.text = weather.weatherDescription
@@ -139,9 +148,9 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-
-        }
+        
     }
+}
  
     
    
